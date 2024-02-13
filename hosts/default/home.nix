@@ -22,6 +22,9 @@ in {
   
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  home.shellAliases = {
+    update = "sudo nixos-rebuild switch --flake ~/nixos#default";
+  };
 
   nixpkgs.config.allowUnfree = true;
 

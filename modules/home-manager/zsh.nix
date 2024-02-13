@@ -7,11 +7,6 @@
     enable = true;
     enableAutosuggestions = true;
 
-    shellAliases = {
-      update = "sudo nixos-rebuild switch --flake /etc/nixos#default";
-      nixtest = "sudo nixos-rebuild test --flake /etc/nixos#default"; 
-    };
-
     initExtraBeforeCompInit = ''
       # Source the Powerlevel10k configuration file if it exists
       [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
