@@ -9,7 +9,8 @@ in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      "${modules}/essential-dev.nix"
+      "${modules}/kdeconnect.nix"
+      # "${modules}/essential-dev.nix"
       inputs.home-manager.nixosModules.default
     ];
 
@@ -19,18 +20,6 @@ in {
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  networking.firewall = { 
-    enable = true;
-    allowedTCPPortRanges = [ 
-      { from = 1714; to = 1764; } # KDE Connect
-    ];  
-    allowedUDPPortRanges = [ 
-      { from = 1714; to = 1764; } # KDE Connect
-    ];  
-  };  
-
-
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -125,7 +114,6 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    libsForQt5.kdeconnect-kde
     git
   ];
 
