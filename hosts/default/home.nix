@@ -14,6 +14,7 @@ in {
     "${hmModules}/work.nix"
     "${hmModules}/neovim.nix"
     "${hmModules}/git.nix"
+    "${hmModules}/books.nix"
   ];
 
   home.username = "dgjalic";
