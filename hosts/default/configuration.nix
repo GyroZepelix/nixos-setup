@@ -10,7 +10,7 @@ in {
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       "${modules}/kdeconnect.nix"
-      # "${modules}/essential-dev.nix"
+      "${modules}/essential-dev.nix"
       inputs.home-manager.nixosModules.default
     ];
 
