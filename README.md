@@ -34,6 +34,6 @@ Contributions are welcome! Please submit a pull request or create an issue if yo
 
 ## License
 
-This project is open-source and available under the [MIT License](https://opensource.org/license/mit/).
+This project is open-source and available under the [MIT License](LICENCE).
 
 
