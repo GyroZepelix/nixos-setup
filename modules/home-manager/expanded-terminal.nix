@@ -2,13 +2,32 @@
 
 {
   home.packages = with pkgs; [
-    bat
     jless
-    eza
+    fzf
   ];
 
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "gruvbox";
+    };
+  };
+
+  programs.eza = {
+    enable = true;
+    enableAliases = true;
+    icons = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [
+      "--cmd cd"
+    ];
+  };
+
   home.shellAliases = {
-    ls = "exa --icons";
     cat = "bat";
     tree = "exa --icons --tree";
   };
