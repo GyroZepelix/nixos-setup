@@ -12,6 +12,9 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      devShells.x86_64-linux.rust-stable = (import ./rust.nix { inherit pkgs; });
+      devShells.${system} = {
+        rust-stable = (import ./rust.nix { inherit pkgs; });
+        java = (import ./java.nix { inherit pkgs; });
+      };
     };
 }
