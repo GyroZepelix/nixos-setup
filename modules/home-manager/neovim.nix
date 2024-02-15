@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, inputs, ...}:
 
 {
   
@@ -10,6 +10,19 @@
     xclip
     wl-clipboard
   ];
+
+  nixpkgs = {
+    overlays = [
+      ( final: prev: {
+        vimPlugins = prev.vimPlugins // {
+          harpoon2-nvim = prev.vimUtils.buildVimPlugin {
+            name = "harpoon2";
+            src = inputs.plugin-harpoon2;
+          };
+        };
+      })
+    ];
+  };
   
 programs.neovim = 
   let
@@ -67,6 +80,10 @@ programs.neovim =
       }
       plenary-nvim
       telescope-fzf-native-nvim
+      {
+        plugin = harpoon2-nvim;
+        config = toLuaFile ./nvim/plugin/harpoon.lua;
+      }
 
       {
         plugin = lualine-nvim;
