@@ -30,10 +30,16 @@ programs.neovim =
 
       xclip
       wl-clipboard
+      ripgrep
+      fd
     ];
 
     plugins = with pkgs.vimPlugins; [
 
+      {
+        plugin = neodev-nvim;
+        config = toLua "require(\"neodev\").setup()";
+      }
       {
         plugin = nvim-lspconfig;
         config = toLuaFile ./nvim/plugin/lsp.lua;
@@ -49,30 +55,25 @@ programs.neovim =
         config = "colorscheme gruvbox";
       }
 
-      neodev-nvim
-
-      nvim-cmp 
       {
         plugin = nvim-cmp;
         config = toLuaFile ./nvim/plugin/cmp.lua;
       }
+      cmp-nvim-lsp
 
       {
         plugin = telescope-nvim;
         config = toLuaFile ./nvim/plugin/telescope.lua;
       }
-
+      plenary-nvim
       telescope-fzf-native-nvim
 
-      cmp_luasnip
-      cmp-nvim-lsp
+      {
+        plugin = lualine-nvim;
+        config = toLuaFile ./nvim/plugin/lualine.lua;
+      }
 
-      luasnip
       friendly-snippets
-
-
-      lualine-nvim
-      nvim-web-devicons
 
       {
         plugin = (nvim-treesitter.withPlugins (p: [
@@ -88,25 +89,20 @@ programs.neovim =
         config = toLuaFile ./nvim/plugin/treesitter.lua;
       }
 
-      vim-nix
+      {
+        plugin = gitsigns-nvim;
+        config = toLua "require(\'gitsigns\').setup()";
+      }
 
-      # {
-      #   plugin = vimPlugins.own-onedark-nvim;
-      #   config = "colorscheme onedark";
-      # }
+      # Language support
+      luasnip
+      vim-nix
+      cmp_luasnip
     ];
 
-    # extraLuaConfig = ''
-    #   ${builtins.readFile ./nvim/options.lua}
-    # '';
+    extraLuaConfig = ''
+      ${builtins.readFile ./nvim/options.lua}
+    '';
 
-     extraLuaConfig = ''
-       ${builtins.readFile ./nvim/options.lua}
-       ${builtins.readFile ./nvim/plugin/lsp.lua}
-       ${builtins.readFile ./nvim/plugin/cmp.lua}
-       ${builtins.readFile ./nvim/plugin/telescope.lua}
-       ${builtins.readFile ./nvim/plugin/treesitter.lua}
-       ${builtins.readFile ./nvim/plugin/other.lua}
-     '';
   };
 }
