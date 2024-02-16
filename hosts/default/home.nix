@@ -28,7 +28,8 @@ in {
 
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = [];
+  home.packages = [
+  ];
 
   home.file = {};
 

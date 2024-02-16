@@ -8,9 +8,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    plugin-harpoon2.url = "github:theprimeagen/harpoon/harpoon2";
-    plugin-harpoon2.flake = false;
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
