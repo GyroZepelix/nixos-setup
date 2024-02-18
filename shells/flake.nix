@@ -15,6 +15,7 @@
       devShells.${system} = {
         rust-stable = (import ./rust.nix { inherit pkgs; });
         java = (import ./java.nix { inherit pkgs; });
+        java17 = (import ./java17.nix { inherit pkgs; });
       };
     };
 }
