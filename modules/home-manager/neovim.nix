@@ -11,18 +11,6 @@
     wl-clipboard
   ];
 
-  # nixpkgs = {
-  #   overlays = [
-  #     ( final: prev: {
-  #       vimPlugins = prev.vimPlugins // {
-  #         harpoon2-nvim = prev.vimUtils.buildVimPlugin {
-  #           name = "harpoon2";
-  #           src = inputs.plugin-harpoon2;
-  #         };
-  #       };
-  #     })
-  #   ];
-  # };
   
 programs.neovim = 
   let
@@ -84,6 +72,10 @@ programs.neovim =
         plugin = harpoon2;
         config = toLuaFile ./nvim/plugin/harpoon.lua;
       }
+      {
+        plugin = undotree;
+        config = toLuaFile ./nvim/plugin/undotree.lua;
+      }
 
       {
         plugin = lualine-nvim;
@@ -109,6 +101,10 @@ programs.neovim =
       {
         plugin = gitsigns-nvim;
         config = toLua "require(\'gitsigns\').setup()";
+      }
+      {
+        plugin = vim-fugitive;
+        config = toLuaFile ./nvim/plugin/fugitive.lua;
       }
 
       # Language support
